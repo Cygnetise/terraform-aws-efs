@@ -37,3 +37,8 @@ output "network_interface_ids" {
   value       = ["${coalescelist(aws_efs_mount_target.default.*.network_interface_id, list(""))}"]
   description = "List of mount target network interface IDs"
 }
+
+output "security_group_id" {
+  value       = "${join("", aws_security_group.default.*.id)}"
+  description = "The efs attached security group id"
+}
